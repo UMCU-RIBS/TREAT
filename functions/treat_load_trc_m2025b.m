@@ -1,4 +1,7 @@
 function [data,codes,startTimes,srate] = treat_load_trc_m2025b(filename)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
 
 % load the data
 SETTINGS.loadevents.state = 'yes';

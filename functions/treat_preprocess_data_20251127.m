@@ -1,12 +1,16 @@
 function [signal_out, time_vector_ds, event_vector_ds, target_fs] = treat_preprocess_data_20251127(signal_in, sampling_rate, event_vector, notch_base_freq,channelSelection)
-% PREPROCESS_TREAT_DATA Applies standard preprocessing to ECoG signal and preserves cue events during downsampling.
-% Adds a GUI for channel selection (based on RMS visualization).
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
+% Standard preprocessing to ECoG signal and preserves cue events during downsampling.
 %
 % Inputs:
 %   signal_in       - channels × time matrix of raw signals
 %   sampling_rate   - sampling rate in Hz
 %   event_vector    - 1 × time binary vector marking cue events
 %   notch_base_freq - base frequency for notch filtering (50 or 60 Hz)
+%   channelSelection - selection of included channels
 %
 % Outputs:
 %   signal_out      - preprocessed signal matrix (selected channels only)

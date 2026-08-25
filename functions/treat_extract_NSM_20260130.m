@@ -1,11 +1,7 @@
 function [nSlopemarker,min_dists] = treat_extract_NSM_20260130(power_data,sfreq,time_per_trial,tw,m,th,good_trials,cue_moment,userInputs)
-%Extract the GSM. Sit and watch how this works...
-% (C) MP Branco, 27 Jan 2016
-% adjusted in several places, by Simon Geukes, March 2025
-% cleaned for first version of the treat toolbox, July 2025
-
-% inputs:
-% th: th (in s) defines the interval where distance is calculated
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
 
 figs = 1; %flag for figures
 

@@ -1,5 +1,9 @@
 function [startTime, endTime] = treat_neuralSlopeGUI(trialLength)
-    % Create the GUI window
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes    
+
+% Create the GUI window
     fig = uifigure('Name', 'Neural Slope Marker Time Range', 'Position', [100 100 400 250]);
 
     % Start time label and input

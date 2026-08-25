@@ -1,4 +1,10 @@
 function [selected_trials, slope_guess] = treat_trial_selection_20260130(mean_trace,cue_moment,sfreq,userInputs)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
+% Run Trial Selection
+
 trialPercentage = userInputs.trialPercentage;
 
 %number of trials
@@ -6,7 +12,7 @@ num_trials = size(mean_trace,1);
 
 %setting time periods of interest for the active and rest
 %periods for trial selection, in seconds.
-act_ind = [cue_moment+0.3 cue_moment+1.5]; %2026-02-11: extended from 1.0 to 1.5 seconds to accomodate slower responses. 
+act_ind = [cue_moment+0.3 cue_moment+1.5]; 
 rest_ind = [cue_moment-1.5 cue_moment-0.3];
 
 fprintf(['The active period for trial selection is defined as %.2f - %.2fs... \n' ...

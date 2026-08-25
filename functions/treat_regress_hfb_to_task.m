@@ -1,4 +1,8 @@
 function [R2_stats, rest_feature_means, act_feature_means] = treat_regress_hfb_to_task(active_data, rest_data)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
 % Compute signed r^2 and p-values for each channel using corrcoef
     num_chan = size(active_data,1);
     act_feature_means = squeeze(mean(active_data,2))'; % [trials x channels]

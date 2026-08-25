@@ -1,6 +1,9 @@
-function [nSlopemarker,peaks_all,min_all] =run_treat_20260622(data, codes, startTimes, sampling_rate,userInputs)
-% First attempt at the function to run the TREAT toolbox
-% SH Geukes, 2025
+function [nSlopemarker] =run_treat_20260622(data, codes, startTimes, sampling_rate,userInputs)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
+% Run the TREAT toolbox
 
 % set paths and set the stage
 close all; clc
@@ -39,7 +42,7 @@ fprintf('Extracting the %s...\n',lower(feat_oi))
 if strcmp(feat_oi,'Local motor potential')
     
     windowsize = 0.375; %from Schalk et al., 2007; 
-    [av_processed_signal,event_vector_ds] = treat_calculate_LMP(data,windowsize,sfreq,event_vector_ds); %with quick fix for the event vector. change later! 
+    [av_processed_signal,event_vector_ds] = treat_calculate_LMP(data,windowsize,sfreq,event_vector_ds); 
 else %extract power
     switch feat_oi
         case 'High-frequency band'
@@ -164,7 +167,7 @@ sgtitle(sprintf('Average signal over %d electrodes with significant R^2 values',
 %This is something you'll have to play with to get sensible results.
 [startTime, endTime] = treat_neuralSlopeGUI(trialLength);
 
-tw = [cue_moment+startTime cue_moment+endTime]; %in seconds. add the cue time to more easy calculate the NSM later. 
+tw = [cue_moment+startTime cue_moment+endTime]; %in seconds  
 
 % 3. Define the time interval (th=epsilon_ni, in seconds) around the line segment
 % with which you calculate the distance between slope and signal.
@@ -264,7 +267,6 @@ for tr= good_trial_no(2:end)
     xline(0,':')
 end
 
-% sgtitle(sprintf('%s, run %d - trial alignment',gesture,run_oi))
 sgtitle('Trial alignment')
 
 figure('units','normalized','outerposition',[0 0 1 1]);hold on;
@@ -292,27 +294,14 @@ plot(time_per_trial,nanmean(shiftedtrials,1)+nanstd(shiftedtrials,[],1),'r--','H
 plot(time_per_trial,nanmean(shiftedtrials,1)-nanstd(shiftedtrials,[],1),'r--','HandleVisibility','off')
 grid on;
 linkaxes(ax2,'xy')
-% sgtitle(sprintf('%s, run %d - mean over trials',gesture,run_oi))
 sgtitle('Mean over trials')
 
 treat_make_pretty
  
-%save  magnitude and index of the peaks of the averages across trials to quantify effects later
-[m_or,i_or] = max(mean(mean_trace_not_smoothed,1)); %original trials
-[m_gt,i_gt] = max(mean(mean_trace_not_smoothed(selected_trials,:),1)); %selected trials
-[m_sh,i_sh] = max(nanmean(shiftedtrials,1)); %shifted trials
-
-peaks_all.orig = m_or;
-peaks_all.good_chan = m_gt;
-peaks_all.shifted = m_sh;
-
-min_all.orig = min(mean(mean_trace_not_smoothed(:,1:i_or),1));
-min_all.good_chan = min(mean(mean_trace_not_smoothed(selected_trials,1:i_gt),1));
-min_all.shifted = min(nanmean(shiftedtrials(:,1:i_sh,1)));
-
 if userInputs.saveNSM
-    disp('Saving neural slope markers in the current directory...')
+    saveDir = [userInputs.treatFolder '/data/']; 
+    fprintf('Saving neural slope markers %s\n',saveDir)
 
-    save(sprintf('%s_neuralSlopemarker.mat',userInputs.subjectName), 'nSlopemarker','-mat');
+    save(sprintf('%s%s_neuralSlopemarker.mat',saveDir,userInputs.subjectName), 'nSlopemarker','-mat');
 end
 end

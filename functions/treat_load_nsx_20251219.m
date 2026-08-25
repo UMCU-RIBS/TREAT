@@ -1,4 +1,8 @@
 function [data,codes,startTimes,srate] = treat_load_nsx_20251219(filename)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
 %loading nsx and nev files using the nsx file name. 
 
 filepath = filename(1:end-4);

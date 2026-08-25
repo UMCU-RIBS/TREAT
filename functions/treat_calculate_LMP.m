@@ -1,4 +1,8 @@
 function [lmp_data,events_adj] = treat_calculate_LMP(data,windowsize,sfreq,events)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
 windowsize_samples = round(windowsize*sfreq); % convert to samples
 lmp_data = movmean(data,[windowsize_samples,0], 2, 'Endpoints', 'fill'); %"fill":	Replace nonexisting elements with NaN.
 

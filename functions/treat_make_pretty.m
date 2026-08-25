@@ -1,12 +1,9 @@
 function treat_make_pretty(f)
-% make_pretty does basic figure clean-up. 
-% Original code by Brian Dekleva. Adjusted by Simon Geukes, 2025
-%
-% It can be called directly after plotting
-% e.g.
-%     >>  figure; hold on;
-%     >>  plot(randn(10,2),randn(10,2),'.');
-%     >>  make_pretty;
+% % This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+% 
+% treat_make_pretty does basic figure clean-up. 
 %
 % INPUTS
 %     f (optional) : figure handle

@@ -1,4 +1,7 @@
 function sfreq = samp_freq_input
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
 
 % Ask user for the cue appearance time in seconds
 prompt = {'Enter sampling frequency of the data (in Hz):'};

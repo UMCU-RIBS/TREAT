@@ -1,5 +1,9 @@
 function [rel_code, trialLength] = treat_selectRelevantCodeAndTrialLength(codes, startTimes, samplingRate)
-    % Validate input lengths
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes   
+
+% Validate input lengths
     if length(codes) ~= length(startTimes)
         error('codes and startTimes must have the same length.');
     end
@@ -50,10 +54,10 @@ function [rel_code, trialLength] = treat_selectRelevantCodeAndTrialLength(codes,
         relTimes = timeSec(idx);
         diffs = diff(relTimes);
 
-        % if any(diffs < 1.5) %uncomment this after federica is done!
-        %     errordlg('Error: Some intervals between occurrences are shorter than 1.5 seconds.', 'Interval Check');
-        %     return; % Do not proceed
-        % end
+        if any(diffs < 1.5) 
+            errordlg('Error: Some intervals between occurrences are shorter than 1.5 seconds.', 'Interval Check');
+            return; % Do not proceed
+        end
 
         % Store stats for next GUI
         assignin('base', 'medianInterval', median(diffs));

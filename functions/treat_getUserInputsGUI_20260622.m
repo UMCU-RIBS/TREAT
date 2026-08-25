@@ -1,4 +1,8 @@
 function userInputs = treat_getUserInputsGUI_20260622(treatFolder)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
 f = figure('Name', 'TREAT Toolbox Input', 'Position', [500 500 600 600]);
 
 
@@ -173,7 +177,7 @@ uiwait(f);
         end
 
         % defaultPath = '/Fridge/bci/data/bcipatients/mels/micromed/190610/';
-        defaultPath = '/Fridge/bci/data/bcipatients/habe/micromed/habe110210/PAT_110/';
+        defaultPath = treatFolder;
         [file, path, ~] = uigetfile(filterList, 'Select a compatible file', defaultPath);
 
         if isequal(file, 0)

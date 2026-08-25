@@ -1,5 +1,8 @@
-function [active_data, rest_data, traces] = segment_treat_trials_simple(av_processed_signal, event_vector, fs, win_sec)
-%SEGMENT_TREAT_TRIALS_SIMPLE
+function [active_data, rest_data, traces] = treat_segment_trials(av_processed_signal, event_vector, fs, win_sec)
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
 % Segment into [channels x time x trials] with a combined trace per trial.
 % - Active and rest segment lengths are fixed by time (default 1s)
 % - Requires sampling rate fs (Hz)
@@ -10,7 +13,7 @@ function [active_data, rest_data, traces] = segment_treat_trials_simple(av_proce
 % Inputs:
 %   av_processed_signal : [T x C]
 %   event_vector        : [T x 1] logical or numeric (cue > 0)
-%   fs                  : sampling rate in Hz (required)
+%   fs                  : sampling rate in Hz 
 %   win_sec             : segment length in seconds (optional, default = 1)
 %
 % Outputs:
@@ -23,7 +26,7 @@ function [active_data, rest_data, traces] = segment_treat_trials_simple(av_proce
         error('Please provide sampling rate fs (Hz).');
     end
     if nargin < 4 || isempty(win_sec)
-        win_sec = 1.5; % default 1 second
+        win_sec = 1.0; % default 1 second
     end
 
     if ~isscalar(fs) || fs <= 0

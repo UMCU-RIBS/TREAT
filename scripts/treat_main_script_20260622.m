@@ -1,14 +1,14 @@
+% This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+
+% Main script to run the TREAT toolbox
 clc; clear except; close all;
 
 %adjust this path so that it points to your own version of treat, e.g.: 
-treatFolder = '/home/simon/Documents/MATLAB/TREAT/'; 
+treatFolder = '/home/simon/Documents/MATLAB/Toolboxes/TREAT/TREAT/'; 
 
 addpath(genpath(treatFolder)) 
-
-%paths to loading functions
-addpath(genpath('/usr/local/matlabtools_LATEST/NPMK'));
-addpath('/usr/local/matlabtools_LATEST/readtrc/');
-addpath('/usr/local/matlabtools_LATEST/BCI_2000/');
 
 %get user inputs 
 userInputs = treat_getUserInputsGUI_20260622(treatFolder);
@@ -26,6 +26,6 @@ switch userInputs.fileType
 end
 
 %% run treat
-[nSlopemarker,peaks_all,min_all] = run_treat_20260622(data, codes,startTimes, samplingRate,userInputs);
+nSlopemarker = run_treat_20260622(data, codes,startTimes, samplingRate,userInputs);
 
 

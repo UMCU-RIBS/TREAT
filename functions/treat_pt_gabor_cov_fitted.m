@@ -1,6 +1,9 @@
-% October 2025: Copy of the gabor wavelet function written by Zachary
-% Freudenburg for the TREAT toolbox
-
+% % This file is part of the TREAT Toolbox V1.0
+% Copyright © 2026 University Medical Center Utrecht 
+% Main Authors: Mariana P Branco, Simon Geukes
+% This function is a copy of the gabor wavelet function written by 
+% Zachary Freudenburg 
+% 
 % *** the gabor wavelet vector size is fitted to the wavelet width to speed
 % up convoultion at high frequencies
 %
